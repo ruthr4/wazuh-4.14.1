@@ -273,12 +273,12 @@ namespace Utils
     }
 
 #if __cplusplus >= 201703L
-    template<typename T>
     /**
      * @brief Convert a raw timestamp to ISO8601 format.
      * @param timestamp Timestamp to convert. Can be uint32_t, double, std::string or std::string_view.
      * @return std::string ISO8601 timestamp or empty string.
      */
+    template<typename T>
     static std::string rawTimestampToISO8601(T timestamp)
     {
         static_assert(std::is_same_v<std::decay_t<T>, uint32_t> || std::is_same_v<std::decay_t<T>, double> ||
