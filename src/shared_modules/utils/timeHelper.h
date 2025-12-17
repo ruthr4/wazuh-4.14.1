@@ -241,9 +241,13 @@ namespace Utils
             {
                 return "";
             }
-            // Check Z exists on expected position if no milliseconds.
-            else if (size == ISO8601_LENGHT_NO_MS && i == 19 && timestamp[i] == 'Z')
+            // Check Z exists on expected position if no milliseconds and add default milliseconds.
+            else if (size == ISO8601_LENGHT_NO_MS && i == 19)
             {
+                if (timestamp[i] != 'Z')
+                {
+                    return "";
+                }
                 // Adds milliseconds to a valid ISO8601 without milliseconds.
                 auto tempTimestamp {timestamp};
                 Utils::replaceFirst(tempTimestamp, "Z", ".000Z");
