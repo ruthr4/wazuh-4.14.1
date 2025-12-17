@@ -2345,10 +2345,10 @@ static void test_fim_scan_db_full_double_scan(void **state) {
     };
     int i;
 
-    expect_function_call_any(__wrap_pthread_mutex_lock);
-    expect_function_call_any(__wrap_pthread_rwlock_rdlock);
     expect_function_call_any(__wrap_pthread_rwlock_wrlock);
     expect_function_call_any(__wrap_pthread_rwlock_unlock);
+    expect_function_call_any(__wrap_pthread_rwlock_rdlock);
+    expect_function_call_any(__wrap_pthread_mutex_lock);
     expect_function_call_any(__wrap_pthread_mutex_unlock);
     will_return(__wrap_fim_db_transaction_start, mock_handle);
     expect_string(__wrap__minfo, formatted_msg, FIM_FREQUENCY_STARTED);
@@ -2408,10 +2408,10 @@ static void test_fim_scan_db_full_not_double_scan(void **state) {
     struct stat buf = { .st_mode = S_IFDIR };
     TXN_HANDLE mock_handle;
 
-    expect_function_call_any(__wrap_pthread_mutex_lock);
-    expect_function_call_any(__wrap_pthread_rwlock_rdlock);
     expect_function_call_any(__wrap_pthread_rwlock_wrlock);
     expect_function_call_any(__wrap_pthread_rwlock_unlock);
+    expect_function_call_any(__wrap_pthread_rwlock_rdlock);
+    expect_function_call_any(__wrap_pthread_mutex_lock);
     expect_function_call_any(__wrap_pthread_mutex_unlock);
     will_return(__wrap_fim_db_transaction_start, &mock_handle);
 
@@ -2471,10 +2471,10 @@ static void test_fim_scan_no_limit(void **state) {
     struct stat buf = { .st_mode = S_IFDIR };
     TXN_HANDLE mock_handle;
 
-    expect_function_call_any(__wrap_pthread_mutex_lock);
-    expect_function_call_any(__wrap_pthread_rwlock_rdlock);
     expect_function_call_any(__wrap_pthread_rwlock_wrlock);
     expect_function_call_any(__wrap_pthread_rwlock_unlock);
+    expect_function_call_any(__wrap_pthread_rwlock_rdlock);
+    expect_function_call_any(__wrap_pthread_mutex_lock);
     expect_function_call_any(__wrap_pthread_mutex_unlock);
     will_return(__wrap_fim_db_transaction_start, &mock_handle);
     expect_string(__wrap__minfo, formatted_msg, FIM_FREQUENCY_STARTED);
